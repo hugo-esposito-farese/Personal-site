@@ -1,0 +1,69 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+
+const sorted = allProjects.sort(
+  (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime()
+);
+
+const statusOrder = { active: 0, shipped: 1, paused: 2, abandoned: 3 };
+const byStatus = sorted.sort(
+  (a, b) => statusOrder[a.data.status] - statusOrder[b.data.status]
+);
+
+const counts = {
+  all: allProjects.length,
+  active: allProjects.filter((p) => p.data.status === 'active').length,
+  shipped: allProjects.filter((p) => p.data.status === 'shipped').length,
+  abandoned: allProjects.filter((p) => p.data.status === 'abandoned').length,
+};
+---
+
+<PageLayout
+  title="Projects"
+  description="Every project I've built — the active ones, the shipped ones, and the ones I killed. All documented."
+>
+  <div class="max-w-3xl mx-auto px-6 py-14">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-50 mb-3">Projects</h1>
+      <p class="text-zinc-400 leading-relaxed max-w-xl">
+        Everything I've built — the active ones, the ones I shipped, and the ones I killed.
+        Failures are documented as thoroughly as successes.
+      </p>
+    </div>
+
+    <!-- Status summary -->
+    <div class="flex flex-wrap gap-4 mb-10 pb-8 border-b border-zinc-800/60">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-sm text-zinc-400">{counts.active} active</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+        <span class="text-sm text-zinc-400">{counts.shipped} shipped</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+        <span class="text-sm text-zinc-400">{counts.abandoned} abandoned</span>
+      </div>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        byStatus.map((project) => (
+          <ProjectCard
+            id={project.id}
+            title={project.data.title}
+            description={project.data.description}
+            status={project.data.status}
+            technologies={project.data.technologies}
+            cover={project.data.cover}
+          />
+        ))
+      }
+    </div>
+  </div>
+</PageLayout>

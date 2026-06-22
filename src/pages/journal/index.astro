@@ -1,0 +1,53 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import JournalEntryRow from '../../components/JournalEntryRow.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('journal');
+const sorted = allEntries.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+const allTags = [...new Set(sorted.flatMap((e) => e.data.tags))].sort();
+---
+
+<PageLayout
+  title="Journal"
+  description="Build-in-public updates, reflections on projects, and things I'm learning. Chronological and unfiltered."
+>
+  <div class="max-w-3xl mx-auto px-6 py-14">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-50 mb-3">Journal</h1>
+      <p class="text-zinc-400 leading-relaxed max-w-xl">
+        Build-in-public updates, reflections on projects, and things I'm figuring out.
+        Chronological and honest — including the things that didn't work.
+      </p>
+    </div>
+
+    {allTags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-8 pb-8 border-b border-zinc-800/60">
+        {allTags.map((tag) => (
+          <span class="text-xs text-zinc-600 font-mono hover:text-zinc-400 cursor-default transition-colors">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <div>
+      {sorted.map((entry) => (
+        <JournalEntryRow
+          id={entry.id}
+          title={entry.data.title}
+          date={entry.data.date}
+          tags={entry.data.tags}
+          excerpt={entry.data.excerpt}
+        />
+      ))}
+    </div>
+
+    {sorted.length === 0 && (
+      <p class="text-zinc-600 text-sm">No entries yet. Coming soon.</p>
+    )}
+  </div>
+</PageLayout>

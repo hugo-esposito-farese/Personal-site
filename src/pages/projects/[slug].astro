@@ -1,0 +1,145 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import Tag from '../../components/Tag.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const {
+  title,
+  description,
+  status,
+  startDate,
+  endDate,
+  technologies,
+  links,
+  revenue,
+  updates,
+} = project.data;
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+
+const duration = endDate
+  ? `${formatDate(startDate)} → ${formatDate(endDate)}`
+  : `${formatDate(startDate)} → present`;
+---
+
+<PageLayout title={title} description={description}>
+  <div class="max-w-3xl mx-auto px-6 py-14">
+    <!-- Back -->
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-1.5 text-sm text-zinc-600 hover:text-zinc-400 transition-colors mb-10"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      All projects
+    </a>
+
+    <!-- Header -->
+    <div class="mb-10">
+      <div class="flex items-start justify-between gap-4 mb-3">
+        <h1 class="text-3xl font-bold tracking-tight text-zinc-50">{title}</h1>
+        <StatusBadge status={status} />
+      </div>
+      <p class="text-zinc-400 leading-relaxed text-lg mb-6">{description}</p>
+
+      <!-- Meta row -->
+      <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-zinc-500 pb-6 border-b border-zinc-800/60">
+        <span>{duration}</span>
+        {revenue !== undefined && (
+          <span>Revenue: <span class="text-zinc-400 font-medium">{revenue}</span></span>
+        )}
+      </div>
+
+      <!-- Tech + links -->
+      <div class="flex flex-wrap gap-4 items-center justify-between pt-4">
+        <div class="flex flex-wrap gap-1.5">
+          {technologies.map((tech) => <Tag tag={tech} />)}
+        </div>
+        {links && (
+          <div class="flex items-center gap-3">
+            {links.live && (
+              <a
+                href={links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors flex items-center gap-1.5 border border-zinc-700 rounded-lg px-3 py-1.5 hover:border-zinc-600"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                </svg>
+                Live
+              </a>
+            )}
+            {links.github && (
+              <a
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors flex items-center gap-1.5 border border-zinc-700 rounded-lg px-3 py-1.5 hover:border-zinc-600"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                GitHub
+              </a>
+            )}
+            {links.demo && (
+              <a
+                href={links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors flex items-center gap-1.5 border border-zinc-700 rounded-lg px-3 py-1.5 hover:border-zinc-600"
+              >
+                Demo
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Updates timeline -->
+    {updates && updates.length > 0 && (
+      <div class="mb-10">
+        <h2 class="text-xs font-medium text-zinc-500 uppercase tracking-widest mb-4">Timeline</h2>
+        <div class="space-y-3 border-l border-zinc-800 pl-4">
+          {updates
+            .slice()
+            .reverse()
+            .map((update) => (
+              <div class="relative">
+                <span class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-zinc-700 border border-zinc-800"></span>
+                <time class="text-xs text-zinc-600 font-mono block mb-0.5">
+                  {update.date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                <p class="text-sm text-zinc-400 leading-relaxed">{update.text}</p>
+              </div>
+            ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Content -->
+    <div class="prose">
+      <Content />
+    </div>
+  </div>
+</PageLayout>

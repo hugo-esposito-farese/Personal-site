@@ -1,0 +1,69 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('journal');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { title, date, tags, project } = entry.data;
+
+const formatted = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<PageLayout title={title}>
+  <div class="max-w-3xl mx-auto px-6 py-14">
+    <!-- Back -->
+    <a
+      href="/journal"
+      class="inline-flex items-center gap-1.5 text-sm text-zinc-600 hover:text-zinc-400 transition-colors mb-10"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      All entries
+    </a>
+
+    <!-- Header -->
+    <header class="mb-10 pb-8 border-b border-zinc-800/60">
+      <time
+        datetime={date.toISOString()}
+        class="text-sm text-zinc-600 font-mono block mb-3"
+      >
+        {formatted}
+      </time>
+      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-50 mb-4">
+        {title}
+      </h1>
+      <div class="flex flex-wrap gap-x-4 gap-y-2 items-center">
+        {tags.map((tag) => (
+          <span class="text-sm text-zinc-600 font-mono">#{tag}</span>
+        ))}
+        {project && (
+          <a
+            href={`/projects/${project}`}
+            class="text-sm text-violet-400 hover:text-violet-300 transition-colors"
+          >
+            → {project}
+          </a>
+        )}
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+  </div>
+</PageLayout>

@@ -1,0 +1,47 @@
+---
+import StatusBadge from './StatusBadge.astro';
+import Tag from './Tag.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  status: 'active' | 'shipped' | 'paused' | 'abandoned';
+  technologies: string[];
+  cover?: string;
+}
+
+const { id, title, description, status, technologies, cover } = Astro.props;
+---
+
+<a
+  href={`/projects/${id}`}
+  class="group block bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-zinc-700 hover:bg-zinc-900/80 transition-all duration-200 hover:-translate-y-0.5"
+>
+  {
+    cover && (
+      <div class="mb-4 rounded-lg overflow-hidden bg-zinc-800 aspect-video">
+        <img
+          src={cover}
+          alt={title}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+    )
+  }
+  <div class="flex items-start justify-between gap-3 mb-3">
+    <h3 class="font-semibold text-zinc-100 group-hover:text-white transition-colors leading-snug">
+      {title}
+    </h3>
+    <StatusBadge status={status} />
+  </div>
+  <p class="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-2">
+    {description}
+  </p>
+  <div class="flex flex-wrap gap-1.5">
+    {technologies.slice(0, 4).map((tech) => <Tag tag={tech} />)}
+    {technologies.length > 4 && (
+      <span class="text-xs text-zinc-600 self-center">+{technologies.length - 4} more</span>
+    )}
+  </div>
+</a>

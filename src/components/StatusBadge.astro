@@ -1,0 +1,39 @@
+---
+type Status = 'active' | 'shipped' | 'paused' | 'abandoned';
+
+interface Props {
+  status: Status;
+}
+
+const { status } = Astro.props;
+
+const config: Record<Status, { label: string; classes: string; dot: string }> = {
+  active: {
+    label: 'Active',
+    classes: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
+    dot: 'bg-emerald-400',
+  },
+  shipped: {
+    label: 'Shipped',
+    classes: 'bg-blue-500/10 text-blue-400 border border-blue-500/20',
+    dot: 'bg-blue-400',
+  },
+  paused: {
+    label: 'Paused',
+    classes: 'bg-amber-500/10 text-amber-400 border border-amber-500/20',
+    dot: 'bg-amber-400',
+  },
+  abandoned: {
+    label: 'Abandoned',
+    classes: 'bg-zinc-800 text-zinc-500 border border-zinc-700',
+    dot: 'bg-zinc-500',
+  },
+};
+
+const { label, classes, dot } = config[status];
+---
+
+<span class={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${classes}`}>
+  <span class={`w-1.5 h-1.5 rounded-full ${dot} ${status === 'active' ? 'animate-pulse' : ''}`}></span>
+  {label}
+</span>

@@ -1,0 +1,35 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-zinc-800/50 mt-24">
+  <div class="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-zinc-600 text-sm">
+      © {currentYear} Hugo Esposito-Farese
+    </p>
+    <div class="flex items-center gap-4">
+      <a
+        href="https://github.com/hugo-ef"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-zinc-600 hover:text-zinc-400 text-sm transition-colors"
+      >
+        GitHub
+      </a>
+      <a
+        href="https://x.com/hugo_ef"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-zinc-600 hover:text-zinc-400 text-sm transition-colors"
+      >
+        X / Twitter
+      </a>
+      <a
+        href="/rss.xml"
+        class="text-zinc-600 hover:text-zinc-400 text-sm transition-colors"
+      >
+        RSS
+      </a>
+    </div>
+  </div>
+</footer>

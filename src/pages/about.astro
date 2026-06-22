@@ -1,0 +1,112 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="About"
+  description="About Hugo Esposito-Farese — CS student at 42 Paris, builder, and aspiring founder."
+>
+  <div class="max-w-3xl mx-auto px-6 py-14">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-50 mb-3">About</h1>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-8 mb-12">
+      <div class="shrink-0">
+        <img
+          src="/images/hugo_photo_42.jpg"
+          alt="Hugo Esposito-Farese"
+          class="w-28 h-28 rounded-full bg-zinc-900 border border-zinc-800 object-cover"
+          width="112"
+          height="112"
+        />
+      </div>
+      <div>
+        <p class="text-zinc-400 leading-relaxed mb-4">
+          I'm Hugo. I'm a Computer Science student at <a href="https://42.fr" target="_blank" rel="noopener noreferrer" class="text-zinc-300 underline underline-offset-2 hover:text-white transition-colors">42 Paris</a> — the peer-to-peer coding school with no teachers, no classes, and no traditional curriculum.
+        </p>
+        <p class="text-zinc-400 leading-relaxed">
+          My long-term goal is to build technology companies. I'm working towards that by building products now, learning what actually matters, and documenting everything in public.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-10 max-w-2xl prose">
+      <section>
+        <h2>Why I build things</h2>
+        <p>
+          I got into software engineering because I wanted to make things that didn't exist before. Not because I enjoy debugging (I don't) or because I find algorithms beautiful (sometimes).
+          Because writing code is one of the few ways a single person can build something and put it in front of millions of people.
+        </p>
+        <p>
+          I'm interested in the business side as much as the technical side. Building a product that people pay for is a different problem than building a product that people use, which is a different problem than building something that compiles.
+          I want to understand all three layers.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why I document in public</h2>
+        <p>
+          There's a version of this journey where I spend years getting better at code and graduate with a GitHub full of repositories nobody has used.
+          That's not what I want.
+        </p>
+        <p>
+          Publishing forces clarity. If I can't write about what I'm building, I don't really understand it.
+          And the builders I find most interesting are the ones who document the actual process — including the things that went wrong.
+        </p>
+        <p>
+          This site is my public build log. Some of these projects will turn into businesses. Some will fail. Both outcomes will be documented here.
+        </p>
+      </section>
+
+      <section>
+        <h2>What I'm interested in</h2>
+        <ul>
+          <li>AI-native tools for developers and knowledge workers</li>
+          <li>Education technology — specifically, software that teaches by doing</li>
+          <li>The early-stage startup process: idea → first user → first dollar</li>
+          <li>Systems programming and low-level software (thanks, 42)</li>
+          <li>How successful founders thought before they were successful</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I'm not</h2>
+        <p>
+          I'm not a senior engineer. I'm not a growth hacker. I don't have a company yet.
+          I'm a 20-something student who is learning to build things and trying to do it honestly, in public.
+        </p>
+      </section>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-zinc-800/60">
+      <h2 class="text-xs font-medium text-zinc-500 uppercase tracking-widest mb-4">Get in touch</h2>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="https://x.com/hugo_ef"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors border border-zinc-800 rounded-lg px-4 py-2 hover:border-zinc-700"
+        >
+          X / Twitter →
+        </a>
+        <a
+          href="https://github.com/hugo-ef"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors border border-zinc-800 rounded-lg px-4 py-2 hover:border-zinc-700"
+        >
+          GitHub →
+        </a>
+        <a
+          href="https://fr.linkedin.com/in/hugo-esposito-farese-530045407"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-zinc-400 hover:text-zinc-200 transition-colors border border-zinc-800 rounded-lg px-4 py-2 hover:border-zinc-700"
+        >
+          LinkedIn →
+        </a>
+      </div>
+    </div>
+  </div>
+</PageLayout>
