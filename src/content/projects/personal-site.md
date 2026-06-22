@@ -8,7 +8,7 @@ featured: false
 technologies: ["Astro", "Tailwind CSS", "TypeScript", "Vercel"]
 links:
   github: "https://github.com/hugo-ef/personal-site"
-  live: "https://hugoef.com"
+  live: "https://personal-site-henna-beta.vercel.app/"
 updates:
   - date: 2026-06-22
     text: "Shipped v1. Kept it minimal on purpose — content over design."
