@@ -1,7 +1,7 @@
 ---
 title: "AI Training Generator"
 description: "Paste an AI coding conversation and turn it into targeted exercises that test your understanding."
-status: "active"
+status: "demo"
 startDate: 2026-06-01
 featured: false
 revenue: "$0/month"
