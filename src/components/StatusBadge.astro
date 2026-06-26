@@ -1,5 +1,5 @@
 ---
-type Status = 'active' | 'shipped' | 'paused' | 'abandoned';
+type Status = 'active' | 'shipped' | 'paused' | 'abandoned' | 'demo';
 
 interface Props {
   status: Status;
@@ -27,6 +27,11 @@ const config: Record<Status, { label: string; classes: string; dot: string }> = 
     label: 'Abandoned',
     classes: 'bg-zinc-800 text-zinc-500 border border-zinc-700',
     dot: 'bg-zinc-500',
+  },
+  demo: {
+    label: 'Demo',
+    classes: 'bg-purple-500/10 text-purple-400 border border-purple-500/20',
+    dot: 'bg-purple-400',
   },
 };
 
