@@ -1,12 +1,12 @@
 ---
 title: "This Website"
-description: "My personal site — built to document my journey as a builder, student, and future founder. Public record of what I'm building, what I'm learning, and what failed."
+description: "Built to document my journey as a founder."
 status: "shipped"
 startDate: 2026-06-01
 endDate: 2026-06-22
 featured: false
 revenue: "$0/month"
-technologies: ["Astro", "Tailwind CSS", "TypeScript", "Vercel"]
+technologies: ["Astro", "JavaScript", "TypeScript", "CSS"]
 links:
   github: "https://github.com/hugo-ef/personal-site"
   live: "https://personal-site-henna-beta.vercel.app/"

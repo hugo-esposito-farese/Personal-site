@@ -1,11 +1,11 @@
 ---
 title: "AI Training Generator"
-description: "Paste a conversation with a generative AI — on coding, debugging, or software engineering — and the app transforms it into targeted exercises designed to test your understanding of the concepts discussed."
+description: "Paste an AI coding conversation and turn it into targeted exercises that test your understanding."
 status: "active"
 startDate: 2026-06-01
 featured: false
 revenue: "$0/month"
-technologies: ["Python", "AI", "LLM"]
+technologies: ["TypeScript", "JavaScript", "CSS"]
 links:
   live: "https://ai-training-generator-pied.vercel.app/"
   github: "https://github.com/hugo-esposito-farese/ai-training-generator"
