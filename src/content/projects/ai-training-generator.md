@@ -6,8 +6,8 @@ startDate: 2026-06-01
 featured: false
 technologies: ["Python", "AI", "LLM"]
 links:
-  live: "#"
-  github: "#"
+  live: "https://ai-training-generator-pied.vercel.app/"
+  github: "https://github.com/hugo-esposito-farese/ai-training-generator"
 ---
 
 ## What it does
