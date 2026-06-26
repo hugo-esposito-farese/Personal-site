@@ -4,6 +4,7 @@ description: "Paste a conversation with a generative AI — on coding, debugging
 status: "active"
 startDate: 2026-06-01
 featured: false
+revenue: "$0/month"
 technologies: ["Python", "AI", "LLM"]
 links:
   live: "https://ai-training-generator-pied.vercel.app/"

@@ -20,6 +20,7 @@ const projects = defineCollection({
       })
       .optional(),
     revenue: z.string().optional(),
+    logo: z.string().nullish(),
     updates: z
       .array(
         z.object({
