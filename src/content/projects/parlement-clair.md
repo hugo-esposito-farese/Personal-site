@@ -4,7 +4,6 @@ description: "Type a French law, get a plain-language summary tailored to you—
 status: "demo"
 startDate: 2026-06-29
 featured: false
-revenue: "$0/month"
 technologies: ["TypeScript", "JavaScript", "CSS"]
 links:
   live: "https://parlement-clair.vercel.app"

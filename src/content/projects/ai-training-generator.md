@@ -4,7 +4,6 @@ description: "Paste an AI coding conversation and turn it into targeted exercise
 status: "demo"
 startDate: 2026-06-01
 featured: false
-revenue: "$0/month"
 technologies: ["TypeScript", "JavaScript", "CSS"]
 links:
   live: "https://ai-training-generator-pied.vercel.app/"

@@ -5,7 +5,6 @@ status: "shipped"
 startDate: 2026-06-01
 endDate: 2026-06-22
 featured: false
-revenue: "$0/month"
 technologies: ["Astro", "JavaScript", "TypeScript", "CSS"]
 links:
   github: "https://github.com/hugo-ef/personal-site"
