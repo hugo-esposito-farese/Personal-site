@@ -4,7 +4,7 @@ description: "Turn any French law into plain language, instantly."
 status: "demo"
 startDate: 2026-06-29
 featured: false
-technologies: ["TypeScript", "JavaScript", "CSS"]
+technologies: ["JavaScript", "HTML", "CSS"]
 links:
   live: "https://parlement-clair.vercel.app"
 ---
