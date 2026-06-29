@@ -1,6 +1,6 @@
 ---
 title: "ParlementClair"
-description: "Type a French law, get a plain-language summary tailored to you—whether you're 10, an average citizen, or a legal mind."
+description: "Turn any French law into plain language, instantly."
 status: "demo"
 startDate: 2026-06-29
 featured: false

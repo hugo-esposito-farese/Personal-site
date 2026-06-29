@@ -1,6 +1,6 @@
 ---
 title: "This Website"
-description: "Built to document my journey as a founder."
+description: "Built to document my journey as a builder."
 status: "shipped"
 startDate: 2026-06-01
 endDate: 2026-06-22
