@@ -4,7 +4,7 @@ description: "Paste an AI coding conversation and turn it into targeted exercise
 status: "demo"
 startDate: 2026-06-01
 featured: false
-technologies: ["TypeScript", "JavaScript", "CSS"]
+technologies: []
 links:
   live: "https://ai-training-generator-pied.vercel.app/"
   github: "https://github.com/hugo-esposito-farese/ai-training-generator"

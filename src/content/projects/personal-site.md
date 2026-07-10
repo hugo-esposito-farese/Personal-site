@@ -5,7 +5,7 @@ status: "shipped"
 startDate: 2026-06-01
 endDate: 2026-06-22
 featured: false
-technologies: ["Astro", "JavaScript", "TypeScript", "CSS"]
+technologies: []
 links:
   github: "https://github.com/hugo-ef/personal-site"
   live: "https://personal-site-henna-beta.vercel.app/"

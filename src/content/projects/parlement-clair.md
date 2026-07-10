@@ -4,7 +4,7 @@ description: "Turn any French law into plain language, instantly."
 status: "shipped"
 startDate: 2026-06-29
 featured: false
-technologies: ["JavaScript", "HTML", "CSS"]
+technologies: []
 links:
   live: "https://parlement-clair.vercel.app"
 ---
